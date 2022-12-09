@@ -1,6 +1,4 @@
-import axios from "axios";
-
-axios.defaults.baseURL = process.env.API_HOST ?? "http://localhost:8080";
+import axios from "../utils/axios";
 
 type IRegister = {
   name: string;

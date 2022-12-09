@@ -47,21 +47,21 @@ const Register = () => {
             <form className="space-y-3 md:space-y-4" onSubmit={submitClick}>
               {error && <Alert>{error}</Alert>}
               <InputForm
-                name={name}
+                value={name}
                 type="text"
                 placeholder="Your name"
                 onChange={(event) => setName(event.target.value)}
                 labelName="Full Name"
               />
               <InputForm
-                name={email}
+                value={email}
                 type="email"
                 placeholder="name@company.com"
                 onChange={(event) => setEmail(event.target.value)}
                 labelName="Email"
               />
               <InputForm
-                name={password}
+                value={password}
                 type="password"
                 placeholder="••••••••••"
                 onChange={(event) => setPassword(event.target.value)}
