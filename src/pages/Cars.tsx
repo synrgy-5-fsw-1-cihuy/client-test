@@ -13,14 +13,18 @@ const Cars = () => {
 
   const submitClick = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // console.log({ name, cost, capacity, image });
-    await CarService.addCar({ name, cost, capacity, image });
+    const formData = new FormData();
+    formData.append("name", name);
+    formData.append("cost", String(cost));
+    formData.append("capacity", capacity);
+    formData.append("image", image as File);
+    await CarService.addCar(formData);
   };
 
   return (
     <Layout custom>
       <section className="flex items-center justify-center flex-1 w-full px-6 py-8 mx-auto bg-gray-50 md:min-h-full">
-        <div className="w-full bg-white rounded shadow dark:border md:mt-0 sm:max-w-md xl:p-0">
+        <div className="w-full bg-white rounded shadow md:mt-0 sm:max-w-md xl:p-0">
           <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
             <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
               Add new car

@@ -6,8 +6,7 @@ import Logo from "./Logo";
 const Header: FC = () => {
   const navigation = [
     { name: "Home", href: "/" },
-    { name: "About", href: "/about" },
-    { name: "Profile", href: "/profile" },
+    { name: "Cars", href: "/cars" },
   ];
 
   return (
@@ -27,7 +26,7 @@ const Header: FC = () => {
             <button
               data-collapse-toggle="mobile-menu-2"
               type="button"
-              className="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+              className="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
               aria-controls="mobile-menu-2"
               aria-expanded="false"
             >

@@ -1,7 +1,7 @@
 const Logo = () => {
   return (
     <span className="text-2xl font-extrabold">
-      zekhoi
+      Binar
       <span className="text-blue-500">.</span>
     </span>
   );

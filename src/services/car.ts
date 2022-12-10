@@ -2,12 +2,12 @@ import axios from "../utils/axios";
 
 export type IAddCar = {
   name: string;
-  cost: number;
+  cost: number | string;
   capacity: "small" | "medium" | "large";
-  image?: File;
+  image?: File | FormData;
 };
 
-const addCar = (data: IAddCar) => {
+const addCar = (data: FormData) => {
   return axios.post("/api/cars", data).then((res) => res.data);
 };
 

@@ -15,7 +15,11 @@ const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const [error, setError] = useState("");
+  const [message, setMessage] = useState({
+    show: false,
+    type: "",
+    text: "",
+  });
 
   const submitClick = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -25,12 +29,26 @@ const Register = () => {
         email,
         password,
       });
-      navigate("/login");
+      setMessage({
+        show: true,
+        type: "success",
+        text: "Register success, redirecting to login page...",
+      });
+      setTimeout(() => {
+        navigate("/login");
+      }, 3000);
     } catch (error) {
       if (error instanceof AxiosError) {
-        setError(error?.response?.data?.message);
+        setMessage({
+          show: true,
+          type: "error",
+          text: error.response?.data.message,
+        });
         setTimeout(() => {
-          setError("");
+          setMessage({
+            ...message,
+            show: false,
+          });
         }, 3000);
       }
     }
@@ -39,13 +57,18 @@ const Register = () => {
   return (
     <Layout custom>
       <section className="flex items-center justify-center flex-1 w-full px-6 py-8 mx-auto bg-gray-50 md:min-h-full">
-        <div className="w-full bg-white rounded shadow dark:border md:mt-0 sm:max-w-md xl:p-0">
+        <div className="w-full bg-white rounded shadow md:mt-0 sm:max-w-md xl:p-0">
           <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
             <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
               Create an account
             </h1>
             <form className="space-y-3 md:space-y-4" onSubmit={submitClick}>
-              {error && <Alert>{error}</Alert>}
+              {message.type == "error" && (
+                <Alert type={message.type}>{message.text}</Alert>
+              )}
+              {message.type == "success" && (
+                <Alert type={message.type}>{message.text}</Alert>
+              )}
               <InputForm
                 value={name}
                 type="text"
